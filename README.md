@@ -1,4 +1,4 @@
-# BobathanLCHS
+# BobathanLCSS
 
 ## About
 
@@ -9,6 +9,6 @@ _A short description of the project goes here._
 Clone the repository:
 
 ```bash
-git clone https://github.com/jkhrdz/BobathanLCHS.git
-cd BobathanLCHS
+git clone https://github.com/jkhrdz/BobathanLCSS.git
+cd BobathanLCSS
 ```

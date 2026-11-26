@@ -1,0 +1,283 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>London Central Secondary School - IBM Bobathan | Set up your IBM Bob account</title>
+  <meta name="description" content="Get started with BobathanLCSS: create your IBM Bob account and activate a free trial.">
+  <style>
+    :root {
+      --blue: #0f62fe;
+      --blue-hover: #0353e9;
+      --purple: #8a3ffc;
+      --bg: #161616;
+      --surface: #262626;
+      --border: #393939;
+      --text: #f4f4f4;
+      --muted: #a8a8a8;
+      --heading: #ffffff;
+      --link: #78a9ff;
+      --note-bg: #17263c;
+      --note-text: #a6c8ff;
+    }
+    [data-theme="light"] {
+      --bg: #f4f4f4;
+      --surface: #ffffff;
+      --border: #e0e0e0;
+      --text: #161616;
+      --muted: #5f5f5f;
+      --heading: #000000;
+      --link: #0043ce;
+      --note-bg: #edf4ff;
+      --note-text: #003166;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: "IBM Plex Sans", system-ui, -apple-system, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.65;
+    }
+    a { color: var(--link); }
+    :focus-visible { outline: 2px solid var(--purple); outline-offset: 2px; }
+
+    .nav {
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+      padding: .75rem 1.25rem;
+      background: #000000;
+      color: #ffffff;
+    }
+    .nav strong span { color: var(--purple); }
+    .nav button {
+      font: inherit;
+      font-size: .85rem;
+      color: #ffffff;
+      background: none;
+      border: 1px solid #525252;
+      border-radius: 6px;
+      padding: .3rem .75rem;
+      cursor: pointer;
+    }
+
+    .hero {
+      padding: 4.5rem 1.25rem;
+      text-align: center;
+      color: #ffffff;
+      background: linear-gradient(135deg, #001d6c, var(--blue) 55%, var(--purple));
+    }
+    .hero h1 { font-size: clamp(2rem, 6vw, 3.25rem); line-height: 1.15; }
+    .hero p { margin: .75rem auto 0; max-width: 34rem; font-size: 1.1rem; text-wrap: balance; }
+    .hero .date { margin-bottom: 0; font-size: 1.35rem; font-weight: 700; }
+
+    .button {
+      display: inline-block;
+      background: var(--blue);
+      color: #ffffff;
+      text-decoration: none;
+      font-weight: 600;
+      border-radius: 6px;
+      padding: .75rem 1.4rem;
+    }
+    .button:hover { background: var(--blue-hover); }
+
+    main { max-width: 46rem; margin: 0 auto; padding: 3rem 1.25rem; }
+    h2 { color: var(--heading); font-size: 1.6rem; margin-bottom: .5rem; }
+    .lead { color: var(--muted); margin-bottom: 1.75rem; }
+
+    .steps { list-style: none; counter-reset: step; display: grid; gap: 1rem; }
+    .steps li {
+      counter-increment: step;
+      position: relative;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      padding: 1.25rem 1.25rem 1.25rem 4.25rem;
+    }
+    .steps li::before {
+      content: counter(step);
+      position: absolute;
+      left: 1.25rem;
+      top: 1.35rem;
+      width: 2rem;
+      height: 2rem;
+      border-radius: 50%;
+      display: grid;
+      place-items: center;
+      background: var(--blue);
+      color: #ffffff;
+      font-weight: 700;
+    }
+    .steps h3 { color: var(--heading); font-size: 1.1rem; }
+
+    .note {
+      margin: 1.75rem 0;
+      padding: 1rem 1.25rem;
+      border-left: 4px solid var(--blue);
+      border-radius: 0 6px 6px 0;
+      background: var(--note-bg);
+      color: var(--note-text);
+    }
+    .note a { color: inherit; }
+
+    #setup, #challenge, #agenda, #judging { scroll-margin-top: 3.75rem; }
+    .challenge, .judging { margin-top: 3.5rem; }
+    .nav, .nav-actions { flex-wrap: wrap; }
+    .criteria { display: grid; grid-template-columns: repeat(auto-fit, minmax(18rem, 1fr)); gap: 1rem; }
+    .criteria div {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-top: 3px solid var(--purple);
+      border-radius: 6px;
+      padding: 1.1rem 1.25rem;
+    }
+    .criteria dt { color: var(--heading); font-weight: 700; font-size: 1.05rem; margin-bottom: .35rem; }
+    .nav-actions { display: flex; align-items: center; gap: 1rem; }
+    .nav-actions a { color: #ffffff; font-size: .9rem; text-decoration: none; }
+    .nav-actions a:hover { text-decoration: underline; }
+
+    .agenda { margin-top: 3.5rem; }
+    .agenda ul {
+      list-style: none;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 6px;
+    }
+    .agenda li {
+      display: grid;
+      grid-template-columns: 11rem 1fr;
+      gap: .25rem 1rem;
+      padding: .9rem 1.25rem;
+    }
+    .agenda li + li { border-top: 1px solid var(--border); }
+    .agenda .time { color: var(--link); font-weight: 600; font-variant-numeric: tabular-nums; }
+    .agenda .event { color: var(--heading); }
+    @media (max-width: 30rem) {
+      .agenda li { grid-template-columns: 1fr; }
+    }
+
+    footer {
+      border-top: 1px solid var(--border);
+      padding: 1.5rem 1.25rem;
+      text-align: center;
+      color: var(--muted);
+      font-size: .85rem;
+    }
+  </style>
+</head>
+<body>
+  <nav class="nav">
+    <strong>Bobathan<span>LCSS</span></strong>
+    <div class="nav-actions">
+      <a href="#setup">Setup</a>
+      <a href="#challenge">Challenge</a>
+      <a href="#agenda">Agenda</a>
+      <a href="#judging">Judging</a>
+      <button type="button" id="theme-toggle">Light / Dark</button>
+    </div>
+  </nav>
+
+  <header class="hero">
+    <h1>Welcome to IBM Bobathan - London Central Secondary School </h1>
+    <p class="date"><time datetime="2026-11-26">Thursday, November 26, 2026</time></p>
+    <p>Your first step: set up an IBM Bob account and activate your free trial.</p>  </header>
+
+  <main id="setup">
+    <h2>Set up your IBM Bob account</h2>
+    <p class="lead">You can use your Gmail or GitHub account to create and activate a free trial.</p>
+
+    <ol class="steps">
+      <li>
+        <h3>Go to IBM Bob</h3>
+        <p>Open <a href="https://bob.ibm.com" target="_blank" rel="noopener">bob.ibm.com</a> in your web browser.</p>
+      </li>
+      <li>
+        <h3>Start the free trial</h3>
+        <p>Select <strong>Get free trial</strong>.</p>
+      </li>
+      <li>
+        <h3>Create your account</h3>
+        <p>Sign up with your <strong>Gmail</strong> or <strong>GitHub</strong> account.</p>
+      </li>
+      <li>
+        <h3>Activate your trial</h3>
+        <p>Follow the on-screen prompts to finish activation. The trial includes 50 Bobcoins for 30 days.</p>
+      </li>
+    </ol>
+
+    <div class="note">
+      <strong>Note:</strong> Signing in to the Bob IDE requires an IBMid. If you are asked for one and don't have it,
+      <a href="https://www.ibm.com/account/reg/us-en/signup?formid=urx-19776" target="_blank" rel="noopener">create an IBMid</a>.
+    </div>
+
+    <a class="button" href="https://bob.ibm.com/trial" target="_blank" rel="noopener">Start your free trial</a>
+
+    <section class="challenge" id="challenge">
+      <h2>The Challenge</h2>
+      <p>Pick one problem that students, teachers or staff at London Central Secondary School deal with every day or week. Use IBM Bob to build a working solution that makes life easier. Show us who it's for, what it solves, and a live demo.</p>
+    </section>
+
+    <section class="agenda" id="agenda">
+      <h2>Agenda</h2>
+      <p class="lead">Thursday, November 26, 2026</p>
+      <ul>
+        <li><span class="time">2:45 PM</span><span class="event">Doors Open</span></li>
+        <li><span class="time">3:00 – 4:00 PM</span><span class="event">Build Time</span></li>
+        <li><span class="time">4:00 – 4:45 PM</span><span class="event">Judging</span></li>
+        <li><span class="time">4:45 – 4:55 PM</span><span class="event">Judges Consolidate Scores</span></li>
+        <li><span class="time">5:00 PM</span><span class="event">Winners Announcement</span></li>
+        <li><span class="time">5:15 PM</span><span class="event">Wrap Up</span></li>
+      </ul>
+    </section>
+
+    <section class="judging" id="judging">
+      <h2>Judging Rubric</h2>
+      <p class="lead">These definitions are indicative and show what judges may look for.</p>
+      <dl class="criteria">
+        <div>
+          <dt>Use of IBM Bob</dt>
+          <dd>How meaningfully IBM Bob was used to plan, build, test or explain the solution, and how well the team can describe what Bob contributed.</dd>
+        </div>
+        <div>
+          <dt>Solution Completeness</dt>
+          <dd>How much of the solution works from start to finish. The main features run in a demo and address the stated problem.</dd>
+        </div>
+        <div>
+          <dt>Problem Market / Persona Fit</dt>
+          <dd>How clearly the team identifies a real problem and who has it, and how well the solution meets that person's needs.</dd>
+        </div>
+        <div>
+          <dt>Creativity</dt>
+          <dd>How original the idea or approach is, including a fresh take on a familiar problem or an inventive use of the tools.</dd>
+        </div>
+        <div>
+          <dt>Presentation</dt>
+          <dd>How clearly and confidently the team explains the problem, demonstrates the solution, keeps to time and answers questions.</dd>
+        </div>
+        <div>
+          <dt>Teamwork</dt>
+          <dd>How well the team shared the work, collaborated and involved every member in building or presenting.</dd>
+        </div>
+      </dl>
+    </section>
+  </main>
+
+  <footer>
+    BobathanLCSS is not an official IBM website. IBM and IBM Bob are trademarks of IBM.
+  </footer>
+
+  <script>
+    const root = document.documentElement;
+    if (window.matchMedia("(prefers-color-scheme: light)").matches) root.dataset.theme = "light";
+    document.getElementById("theme-toggle").addEventListener("click", () => {
+      root.dataset.theme = root.dataset.theme === "light" ? "dark" : "light";
+    });
+  </script>
+</body>
+</html>
